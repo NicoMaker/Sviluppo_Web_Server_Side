@@ -48,6 +48,18 @@
   - [5xx](#-5xx--errori-del-server)
   - [Riassunto](#-riassunto)
 
+- [Header della risposta](#header-della-risposta)
+  - [Cos è Header HTTP](#cosè-un-header-http)
+  - [Perchè nascondere Header](#perché-nascondere-gli-header)
+  - [Come nascondere Header](#come-nascondere-gli-header-http)
+- [Conclusioni](#conclusioni)
+
+- [Content-Type](#content-type)
+  - [Struttura del Content-Type](#struttura-del-content-type)
+  - [Esempio di Utilizzo](#esempio-di-utilizzo-del-content-type)
+  - [Perchè è Importante](#perché-è-importante)
+
+
 ## Server
 
 Un **server** è un sistema informatico che gestisce dati, applicazioni e servizi che vengono richiesti dai **client**. Può essere un computer fisico o una macchina virtuale che risponde alle richieste provenienti dalla rete.
@@ -410,3 +422,111 @@ Quando un client (browser, app, ecc.) invia una richiesta a un server, quest'ult
 | **5xx**    | Errore Server    | `500 Internal Server Error` |
 
 Ogni codice HTTP aiuta a capire lo stato della richiesta e come rispondere in modo appropriato. 🚀
+
+## Header Della risposta
+
+Se desideri una descrizione su come **non esporre gli header di risposta HTTP**, ecco una spiegazione dettagliata:
+
+### **Cos'è un Header HTTP?**
+
+Gli header HTTP sono una parte importante di ogni richiesta e risposta HTTP. Contengono metadati che descrivono il contenuto, la provenienza e altre informazioni sulla richiesta o risposta. Ad esempio, un server può inviare header che indicano il tipo di contenuto (`Content-Type`), la data della risposta (`Date`), e molte altre informazioni come la versione del server (`X-Powered-By`).
+
+### **Perché Nascondere gli Header?**
+
+Nascondere alcuni header nelle risposte HTTP è una pratica di sicurezza importante, poiché può ridurre il rischio di esposizione di informazioni sensibili, come:
+
+- **Tecnologia del server**: Header come `X-Powered-By` rivelano il tipo di server o framework che stai utilizzando (ad esempio, Express o PHP). Un attaccante potrebbe sfruttare queste informazioni per mirare a vulnerabilità conosciute.
+- **Autenticazione e autorizzazione**: Gli header possono anche contenere informazioni sensibili relative alla sessione utente o alle autorizzazioni, che non dovrebbero essere visibili per evitare che vengano intercettate.
+
+### **Come Nascondere gli Header HTTP?**
+
+1. **Conservere le informazioni minimali**:
+   Evita di includere header non necessari che possano rivelare troppo sul server o sull'applicazione. Ad esempio:
+
+   - **`X-Powered-By`**: Questo header mostra se stai utilizzando un framework come Express, PHP, ecc. Può essere rimosso o nascosto.
+
+2. **Strumenti e Tecniche per Rimuovere o Nascondere gli Header**:
+
+   - **Con Express (Node.js)**:
+     Puoi usare il middleware `helmet` che aiuta a configurare una serie di header di sicurezza, tra cui la rimozione del header `X-Powered-By`:
+
+     ```javascript
+     const express = require("express");
+     const helmet = require("helmet");
+     const app = express();
+
+     app.use(helmet()); // Aggiunge header di sicurezza e rimuove "X-Powered-By".
+     ```
+
+   - **Con Apache**:
+     Puoi rimuovere l'header `X-Powered-By` modificando il file di configurazione di Apache:
+
+     ```apache
+     Header unset X-Powered-By
+     ```
+
+     Questo eviterà che Apache invii informazioni relative al framework usato.
+
+   - **Con Nginx**:
+     Su un server Nginx, puoi usare questa direttiva per rimuovere l'header `X-Powered-By`:
+     ```nginx
+     server {
+         add_header X-Powered-By "";
+     }
+     ```
+
+3. **Nascondere Altri Header Sensibili**:
+
+   - **`Server`**: Rivelare informazioni sul server web (come Apache o Nginx) potrebbe non essere sicuro. Puoi nascondere l'header `Server` con configurazioni simili a quelle descritte sopra.
+   - **`Authorization`**: Se stai utilizzando autenticazione tramite token (come JWT), evita di esporre questi token negli header di risposta, specialmente se non sono necessari.
+
+4. **Altri Header di Sicurezza**:
+   - **Strict-Transport-Security (HSTS)**: Puoi usare HSTS per forzare l'uso di HTTPS.
+   - **Content-Security-Policy (CSP)**: Aiuta a proteggere la tua app da vulnerabilità come XSS (Cross-Site Scripting).
+
+### **Conclusioni**
+
+Nascondere o rimuovere determinati header HTTP è una buona pratica di sicurezza che può ridurre il rischio di esposizione a vulnerabilità. Utilizzando middleware come `helmet` in Node.js o configurando correttamente il server web, puoi proteggere le informazioni sensibili e rendere più difficile per gli attaccanti sfruttare le informazioni riguardanti la tua applicazione.
+
+## Content-Type
+
+Il **Content-Type** è un header HTTP utilizzato per indicare il tipo di contenuto che viene inviato nel corpo di una richiesta o risposta HTTP. Questo header informa il destinatario (sia il server che il client) su come interpretare i dati che stanno per essere ricevuti o inviati. È essenziale per garantire che il contenuto venga trattato correttamente, poiché diversi tipi di contenuti richiedono diversi metodi di elaborazione.
+
+### **Struttura del Content-Type**
+
+Il formato del **Content-Type** è composto da due parti principali:
+
+1. **Tipo principale**: Indica la categoria del contenuto, ad esempio, `text`, `application`, `image`, ecc.
+2. **Sottotipo**: Specifica il tipo esatto all'interno della categoria principale, come `html`, `json`, `png`, ecc.
+
+Ecco alcuni esempi di **Content-Type**:
+
+- **`text/html`**: Indica che il contenuto è una pagina HTML.
+- **`text/plain`**: Indica che il contenuto è testo semplice senza formattazione.
+- **`application/json`**: Indica che il contenuto è in formato JSON.
+- **`application/xml`**: Indica che il contenuto è in formato XML.
+- **`image/jpeg`**: Indica che il contenuto è un'immagine in formato JPEG.
+
+### **Esempio di utilizzo del Content-Type**
+
+Quando un client (come un browser o un'applicazione) invia una richiesta HTTP al server, include l'header `Content-Type` per specificare il tipo di dati che sta inviando nel corpo della richiesta. Ad esempio, quando si invia un modulo HTML con i dati in formato JSON, l'header potrebbe essere:
+
+```http
+Content-Type: application/json
+```
+
+Allo stesso modo, se un server invia una risposta con un tipo di contenuto, ad esempio un file HTML, l'header sarà simile al seguente:
+
+```http
+Content-Type: text/html; charset=UTF-8
+```
+
+In questo caso, `text/html` indica che la risposta contiene una pagina HTML, e `charset=UTF-8` specifica che il set di caratteri utilizzato è UTF-8.
+
+### **Perché è importante?**
+
+1. **Interpretazione dei dati**: Senza il `Content-Type`, il destinatario non saprebbe come interpretare il contenuto della richiesta o della risposta.
+2. **Sicurezza**: Specificare correttamente il tipo di contenuto aiuta a prevenire attacchi come Cross-Site Scripting (XSS), in cui un sito potrebbe tentare di eseguire codice malizioso.
+3. **Compatibilità**: I client e i server si aspettano determinati tipi di contenuti per elaborare correttamente i dati (ad esempio, i formati JSON vengono elaborati automaticamente da JavaScript).
+
+In sintesi, il **Content-Type** è fondamentale per il corretto trattamento delle informazioni inviate tra client e server durante la comunicazione HTTP.
