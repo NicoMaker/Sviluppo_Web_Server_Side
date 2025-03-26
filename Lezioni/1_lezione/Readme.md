@@ -16,6 +16,39 @@
     - [Backup e Ripristino](#4-backup-e-ripristino)
     - [Virtualizzazione e Cloud](#5-virtualizzazione-e-cloud)
 
+- [Differenza Tra server e PC](#differenze-tra-server-e-pc)
+
+  - [Scopo e Utilizzo](#1-scopo-e-utilizzo)
+  - [Hardware](#2-hardware)
+  - [Affidabilità e Continuità Operativa](#3-affidabilità-e-continuità-operativa)
+  - [Sistema operativo software](#4-sistema-operativo-e-software)
+  - [Manutenzione e gestione](#5-manutenzione-e-gestione)
+  - [Sicurezza](#6-sicurezza)
+  - [Prezzo](#7-prezzo)
+  - [Conclusioni](#conclusione-tra-server-e-pc)
+
+- [Metodi HTTP nei server locali](#metodi-http-nei-server-get-post-patch-e-altri)
+
+  - [GET](#1-get-recupero-dati)
+  - [POST](#2-post-invio-dati)
+  - [PUT](#3-put-aggiornamentocreazione-di-risorse)
+  - [PATCH](#4-patch-modifica-parziale-di-una-risorsa)
+  - [DELETE](#5-delete-eliminazione-di-risorse)
+  - [OPTIONS](#6-options-informazioni-sulle-capacità-del-server)
+  - [HEAD](#7-head-recupero-metadati-senza-il-contenuto)
+
+  - [Conclusioni](#conclusione-metodi-http)
+
+- [Status Code](#codici-di-stato-http-guida-completa-)
+
+  - [1xx](#-1xx--informativi)
+  - [2xx](#-2xx--successo)
+  - [3xx](#️-3xx--reindirizzamenti)
+  - [4xx](#-4xx--errori-del-client)
+  - [5xx](#-5xx--errori-del-server)
+  - [Riassunto](#-riassunto)
+
+
 ## Server
 
 Un **server** è un sistema informatico che gestisce dati, applicazioni e servizi che vengono richiesti dai **client**. Può essere un computer fisico o una macchina virtuale che risponde alle richieste provenienti dalla rete.
@@ -88,3 +121,292 @@ Molti server oggi sono virtualizzati o ospitati nel cloud per maggiore scalabili
 - **Virtual Machine (VM)**: Creazione di più server virtuali su un'unica macchina fisica.
 - **Container (Docker/Kubernetes)**: Esecuzione di applicazioni in ambienti isolati e leggeri.
 - **Cloud Server**: Soluzioni offerte da AWS, Azure, Google Cloud per scalabilità e flessibilità.
+
+## Differenze tra Server e PC
+
+I **server** e i **PC** (Personal Computer) hanno molte differenze in termini di hardware, software, affidabilità e utilizzo. Ecco un confronto dettagliato:
+
+### **1. Scopo e Utilizzo**
+
+- **Server**: Sono progettati per gestire grandi quantità di dati, richieste di rete e servizi continui, come siti web, database e applicazioni aziendali.
+- **PC**: Sono progettati per l'uso personale o da ufficio, con prestazioni ottimizzate per l’interazione diretta dell'utente.
+
+### **2. Hardware**
+
+- **Server**: Hanno componenti di livello aziendale, come processori più potenti (Xeon, EPYC), RAM ECC (Error-Correcting Code), alimentatori ridondanti e sistemi di raffreddamento avanzati.
+- **PC**: Utilizzano componenti consumer come CPU Intel Core o AMD Ryzen, RAM standard e alimentatori non ridondanti.
+
+### **3. Affidabilità e Continuità Operativa**
+
+- **Server**: Sono costruiti per funzionare **24/7** senza interruzioni. Hanno:
+  - **RAID** per la ridondanza dei dati.
+  - **Alimentatori doppi** per evitare interruzioni in caso di guasto.
+  - **RAM ECC**, che corregge automaticamente gli errori di memoria.
+- **PC**: Sono progettati per un utilizzo limitato e non sono ottimizzati per la continuità. Un crash o un'interruzione di corrente può causare perdita di dati.
+
+### **4. Sistema Operativo e Software**
+
+- **Server**: Utilizzano sistemi operativi specializzati come Windows Server, Linux (Ubuntu Server, CentOS, Debian), VMware ESXi.
+- **PC**: Usano sistemi operativi consumer come Windows 10/11, macOS o distribuzioni Linux desktop.
+
+### **5. Manutenzione e Gestione**
+
+- **Server**: Hanno strumenti di gestione remota come iDRAC (Dell), iLO (HP), IPMI, e supportano aggiornamenti senza riavvio.
+- **PC**: Devono essere gestiti manualmente, con aggiornamenti e manutenzione più semplici ma meno avanzati.
+
+### **6. Sicurezza**
+
+- **Server**: Sono protetti da sistemi avanzati come firewall hardware, crittografia dei dati e autenticazione a più fattori.
+- **PC**: Hanno protezioni di base come antivirus e firewall software, meno sicure rispetto ai server.
+
+### **7. Prezzo**
+
+- **Server**: Costano molto di più, sia per l'hardware che per la manutenzione (es. data center, licenze software, alimentazione).
+- **PC**: Più economici e accessibili per utenti domestici e uffici.
+
+### **Conclusione tra server e pc**
+
+Se hai bisogno di **affidabilità, sicurezza e prestazioni elevate 24/7**, un **server** è la scelta migliore. Se invece ti serve un dispositivo per attività quotidiane, navigazione e gaming, un **PC** è più che sufficiente.
+
+## **Metodi HTTP nei Server: GET, POST, PATCH e altri**
+
+Quando un client (browser o altra applicazione) comunica con un server web, utilizza diversi **metodi HTTP** per richiedere o inviare dati. Ecco i principali:
+
+---
+
+### **1. GET (Recupero dati)**
+
+- **Descrizione**: Utilizzato per richiedere dati da un server. Non modifica lo stato del server.
+- **Esempio d'uso**:
+  - Recuperare una pagina web
+  - Ottenere un elenco di prodotti da un'API
+- **Esempio di richiesta:**
+  ```http
+  GET /prodotti HTTP/1.1
+  Host: example.com
+  ```
+- **Caratteristiche**:
+  - I parametri possono essere inclusi nell'URL (`?chiave=valore`).
+  - **Idempotente** (eseguirlo più volte non cambia il risultato).
+  - **Cacheabile**.
+
+---
+
+### **2. POST (Invio dati)**
+
+- **Descrizione**: Utilizzato per inviare dati al server (es. form di registrazione, creazione di un nuovo elemento nel database).
+- **Esempio d'uso**:
+  - Creazione di un nuovo utente
+  - Inviare un modulo di contatto
+- **Esempio di richiesta:**
+
+  ```http
+  POST /utenti HTTP/1.1
+  Host: example.com
+  Content-Type: application/json
+
+  {
+    "nome": "Mario",
+    "email": "mario@example.com"
+  }
+  ```
+
+- **Caratteristiche**:
+  - **Non idempotente** (può creare più elementi se eseguito più volte).
+  - Non cacheabile.
+  - I dati sono inviati nel **corpo della richiesta** (body).
+
+---
+
+### **3. PUT (Aggiornamento/Creazione di risorse)**
+
+- **Descrizione**: Utilizzato per aggiornare o creare una risorsa, sostituendola completamente.
+- **Esempio d'uso**:
+  - Aggiornare il profilo di un utente
+- **Esempio di richiesta:**
+
+  ```http
+  PUT /utenti/1 HTTP/1.1
+  Host: example.com
+  Content-Type: application/json
+
+  {
+    "nome": "Mario Rossi",
+    "email": "mario.rossi@example.com"
+  }
+  ```
+
+- **Caratteristiche**:
+  - **Idempotente** (più chiamate producono lo stesso risultato).
+  - Sostituisce completamente la risorsa.
+
+---
+
+### **4. PATCH (Modifica parziale di una risorsa)**
+
+- **Descrizione**: Usato per aggiornare solo alcune proprietà di una risorsa senza sovrascriverla completamente.
+- **Esempio d'uso**:
+  - Aggiornare solo l'email di un utente
+- **Esempio di richiesta:**
+
+  ```http
+  PATCH /utenti/1 HTTP/1.1
+  Host: example.com
+  Content-Type: application/json
+
+  {
+    "email": "nuova.email@example.com"
+  }
+  ```
+
+- **Caratteristiche**:
+  - **Non idempotente** (se cambia i dati a ogni chiamata).
+  - Modifica solo i campi specificati.
+
+---
+
+### **5. DELETE (Eliminazione di risorse)**
+
+- **Descrizione**: Elimina una risorsa dal server.
+- **Esempio d'uso**:
+  - Cancellare un account utente
+- **Esempio di richiesta:**
+  ```http
+  DELETE /utenti/1 HTTP/1.1
+  Host: example.com
+  ```
+- **Caratteristiche**:
+  - **Idempotente** (se ripetuto, la risorsa rimane eliminata).
+  - Non cacheabile.
+
+---
+
+### **6. OPTIONS (Informazioni sulle capacità del server)**
+
+- **Descrizione**: Chiede al server quali metodi sono supportati per una risorsa.
+- **Esempio di richiesta:**
+  ```http
+  OPTIONS /utenti HTTP/1.1
+  Host: example.com
+  ```
+- **Risposta tipica:**
+  ```http
+  Allow: GET, POST, PUT, DELETE, OPTIONS
+  ```
+
+---
+
+### **7. HEAD (Recupero metadati senza il contenuto)**
+
+- **Descrizione**: Simile a **GET**, ma la risposta non include il corpo, solo gli **header**.
+- **Esempio d'uso**:
+  - Controllare se una risorsa è disponibile senza scaricarla.
+- **Esempio di richiesta:**
+  ```http
+  HEAD /immagine.jpg HTTP/1.1
+  Host: example.com
+  ```
+
+---
+
+### **Conclusione Metodi HTTP**
+
+| Metodo      | Uso principale                       | Idempotente | Cacheabile |
+| ----------- | ------------------------------------ | ----------- | ---------- |
+| **GET**     | Recuperare dati                      | ✅          | ✅         |
+| **POST**    | Creare risorse                       | ❌          | ❌         |
+| **PUT**     | Aggiornare/sostituire risorse        | ✅          | ❌         |
+| **PATCH**   | Modifica parziale                    | ❌          | ❌         |
+| **DELETE**  | Eliminare risorse                    | ✅          | ❌         |
+| **OPTIONS** | Ottenere info sui metodi disponibili | ✅          | ❌         |
+| **HEAD**    | Ottenere solo gli header             | ✅          | ✅         |
+
+Ogni metodo HTTP ha un ruolo specifico ed è importante utilizzarlo correttamente per un'API ben strutturata e sicura. 🚀
+
+### **Codici di Stato HTTP: Guida Completa** 🚀
+
+Quando un client (browser, app, ecc.) invia una richiesta a un server, quest'ultimo risponde con un **codice di stato HTTP** che indica il risultato dell'operazione. I codici di stato sono numeri a tre cifre divisi in cinque categorie principali.
+
+---
+
+## **📌 1xx – Informativi**
+
+> Indicano che la richiesta è stata ricevuta e il server sta continuando a processarla.
+
+| **Codice**                  | **Significato**                                                                       | **Descrizione** |
+| --------------------------- | ------------------------------------------------------------------------------------- | --------------- |
+| **100** Continue            | Il server ha ricevuto la richiesta e il client può continuare a inviare dati.         |
+| **101** Switching Protocols | Il server sta cambiando protocollo su richiesta del client (es. da HTTP a WebSocket). |
+| **103** Early Hints         | Invia alcune intestazioni preliminari per ottimizzare il caricamento della pagina.    |
+
+---
+
+## **✅ 2xx – Successo**
+
+> La richiesta è stata ricevuta, compresa e accettata con successo.
+
+| **Codice**         | **Significato**                                                                  | **Descrizione** |
+| ------------------ | -------------------------------------------------------------------------------- | --------------- |
+| **200** OK         | La richiesta è stata completata con successo.                                    |
+| **201** Created    | La richiesta ha creato una nuova risorsa (es. un nuovo utente in un database).   |
+| **202** Accepted   | La richiesta è stata accettata ma verrà elaborata in seguito.                    |
+| **204** No Content | La richiesta è stata elaborata con successo, ma non c'è contenuto da restituire. |
+
+---
+
+## **⚠️ 3xx – Reindirizzamenti**
+
+> Il client deve eseguire un'azione per completare la richiesta.
+
+| **Codice**                 | **Significato**                                                      | **Descrizione** |
+| -------------------------- | -------------------------------------------------------------------- | --------------- |
+| **301** Moved Permanently  | L'URL della risorsa è cambiato in modo permanente.                   |
+| **302** Found              | La risorsa è temporaneamente disponibile a un altro URL.             |
+| **304** Not Modified       | Il contenuto non è stato modificato dal client (usato con la cache). |
+| **307** Temporary Redirect | Simile al 302, ma il metodo HTTP (GET/POST) deve rimanere lo stesso. |
+| **308** Permanent Redirect | Simile al 301, ma il metodo HTTP non può cambiare.                   |
+
+---
+
+## **❌ 4xx – Errori del Client**
+
+> Il problema è causato dal client (es. richiesta errata, autenticazione fallita, risorsa non trovata).
+
+| **Codice**                 | **Significato**                                                                                                | **Descrizione** |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------- |
+| **400** Bad Request        | La richiesta ha una sintassi errata o parametri non validi.                                                    |
+| **401** Unauthorized       | Autenticazione richiesta ma non fornita o non valida.                                                          |
+| **403** Forbidden          | Il server ha capito la richiesta, ma il client non ha i permessi per accedere.                                 |
+| **404** Not Found          | La risorsa richiesta non esiste.                                                                               |
+| **405** Method Not Allowed | Il metodo HTTP utilizzato non è supportato dalla risorsa richiesta.                                            |
+| **408** Request Timeout    | Il server ha impiegato troppo tempo ad attendere la richiesta.                                                 |
+| **409** Conflict           | C'è un conflitto con lo stato attuale della risorsa (es. due utenti che tentano di modificare lo stesso dato). |
+| **429** Too Many Requests  | Il client ha inviato troppe richieste in un breve periodo di tempo (rate limiting).                            |
+
+---
+
+## **🔥 5xx – Errori del Server**
+
+> Il problema è causato dal server (es. crash, sovraccarico, errori di configurazione).
+
+| **Codice**                    | **Significato**                                                                       | **Descrizione** |
+| ----------------------------- | ------------------------------------------------------------------------------------- | --------------- |
+| **500** Internal Server Error | Errore generico del server (es. bug nel codice).                                      |
+| **501** Not Implemented       | Il server non supporta il metodo della richiesta.                                     |
+| **502** Bad Gateway           | Il server ha ricevuto una risposta non valida da un altro server a cui si è connesso. |
+| **503** Service Unavailable   | Il server è temporaneamente sovraccarico o in manutenzione.                           |
+| **504** Gateway Timeout       | Il server non ha ricevuto una risposta in tempo da un altro server.                   |
+
+---
+
+## **📌 Riassunto**
+
+| **Classe** | **Descrizione**  | **Esempio**                 |
+| ---------- | ---------------- | --------------------------- |
+| **1xx**    | Informativo      | `100 Continue`              |
+| **2xx**    | Successo         | `200 OK`                    |
+| **3xx**    | Reindirizzamento | `301 Moved Permanently`     |
+| **4xx**    | Errore Client    | `404 Not Found`             |
+| **5xx**    | Errore Server    | `500 Internal Server Error` |
+
+Ogni codice HTTP aiuta a capire lo stato della richiesta e come rispondere in modo appropriato. 🚀
