@@ -78,6 +78,8 @@
 
 - [Progetti (Esercizi)](#progetti-esercizi)
 
+- [Installi pacchetto in NodeJs](#installi-pacchetto-in-nodejs)
+
 ## Server
 
 Un **server** è un sistema informatico che gestisce dati, applicazioni e servizi che vengono richiesti dai **client**. Può essere un computer fisico o una macchina virtuale che risponde alle richieste provenienti dalla rete.
@@ -674,6 +676,13 @@ In un'applicazione **full-stack**, il **frontend** potrebbe essere gestito con J
 3. La risposta viene visualizzata nel **Frontend**.
 
 Se hai altre domande o vuoi esplorare un esempio più dettagliato, fammi sapere!
+
+
+## Installi pacchetto in NodeJs
+
+```bash
+npm install <nome progetto>
+```
 
 # Progetti (Esercizi)
 
