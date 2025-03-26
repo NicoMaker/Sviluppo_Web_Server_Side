@@ -56,9 +56,27 @@
   - [Conclusioni](#conclusioni)
 
 - [Content-Type](#content-type)
+
   - [Struttura del Content-Type](#struttura-del-content-type)
   - [Esempio di Utilizzo](#esempio-di-utilizzo-del-content-type)
   - [Perchè è Importante](#perché-è-importante)
+
+- [Javascript](#javascript)
+
+  - [Concetto di "Virtual Machine" per JavaScript](#concetto-di-virtual-machine-per-javascript)
+  - [Backend NodeJS](#backend-javascript-con-nodejs)
+  - [Concetto di Asincronicità in Node.js](#concetto-di-asincronicità-in-nodejs)
+  - [Esempio senza async/await (usando callback)](#esempio-senza-asyncawait-usando-callback)
+  - [Async](#async)
+  - [Await](#await)
+  - [Esempio con `async` e `await`](#esempio-con-async-e-await)
+  - [Spiegazione](#spiegazione)
+  - [Perché usare `async/await`](#perché-usare-asyncawait)
+  - [Esempio di un semplice server Node.js](#esempio-di-un-semplice-server-nodejs)
+  - [Architettura di un'applicazione full-stack](#architettura-di-unapplicazione-full-stack)
+  - [Esempio di flusso completo](#esempio-di-flusso-completo)
+
+- [Progetti (Esercizi)](#progetti-esercizi)
 
 ## Server
 
@@ -530,3 +548,131 @@ In questo caso, `text/html` indica che la risposta contiene una pagina HTML, e `
 3. **Compatibilità**: I client e i server si aspettano determinati tipi di contenuti per elaborare correttamente i dati (ad esempio, i formati JSON vengono elaborati automaticamente da JavaScript).
 
 In sintesi, il **Content-Type** è fondamentale per il corretto trattamento delle informazioni inviate tra client e server durante la comunicazione HTTP.
+
+## JavaSCript
+
+L'uso di JavaScript in un contesto di **backend** è sempre più comune grazie a **Node.js**, una runtime che permette di eseguire JavaScript lato server. Con Node.js, JavaScript viene eseguito nel backend (anziché nel browser), permettendo di gestire richieste HTTP, connettersi a database, elaborare dati, e altro ancora.
+
+### Concetto di "Virtual Machine" per JavaScript
+
+Quando parli di "esecuzione in internet in VM" riferendoti al frontend con JavaScript, probabilmente stai facendo riferimento a un ambiente di esecuzione isolato che può essere una **macchina virtuale** (VM). Nel frontend, infatti, JavaScript viene eseguito nel browser, che di fatto agisce come una "macchina virtuale" locale per l'esecuzione del codice JavaScript.
+
+### Backend JavaScript con Node.js
+
+Nel backend, JavaScript viene eseguito su un server tramite Node.js. Un esempio di applicazione di backend in Node.js potrebbe essere una **API RESTful** che gestisce richieste HTTP e fornisce risposte in formato JSON.
+
+### Concetto di Asincronicità in Node.js
+
+In Node.js, il modello **asincrono** e **non bloccante** significa che il codice non si ferma a "aspettare" che un'operazione I/O (input/output) finisca, come la lettura da un file o una richiesta a un database. Invece, il codice continua ad eseguire altre operazioni mentre aspetta che l'operazione I/O venga completata.
+
+Quando l'operazione I/O è terminata, **callback** o **promise** si occupano di gestire la risposta, permettendo al flusso di esecuzione di rimanere libero da blocchi.
+
+#### Esempio senza async/await (usando callback):
+
+Immagina di voler leggere un file e poi restituire il contenuto.
+
+```javascript
+const fs = require("fs");
+
+// Operazione asincrona usando un callback
+fs.readFile("file.txt", "utf8", (err, data) => {
+  if (err) console.error("Errore:", err);
+  else console.log("Contenuto del file:", data);
+});
+
+console.log("Operazione in corso..."); // Questo viene eseguito prima della lettura del file
+```
+
+In questo esempio:
+
+- **`fs.readFile`** legge il file in modo asincrono.
+- La **callback** viene chiamata quando la lettura del file è completata.
+- **`console.log('Operazione in corso...')`** viene eseguito immediatamente, senza aspettare che la lettura del file sia terminata.
+
+### Uso di `async` e `await` in Node.js
+
+Le parole chiave **`async`** e **`await`** semplificano la gestione delle operazioni asincrone, facendo sì che il codice sembri più sincrono, pur rimanendo asincrono.
+
+#### **`async`**:
+
+- Una funzione dichiarata con `async` restituisce sempre una **Promise**.
+- In una funzione `async`, puoi usare `await` per aspettare che una **Promise** venga risolta.
+
+#### **`await`**:
+
+- Si usa per aspettare che una **Promise** venga risolta (o rigettata).
+- Funziona solo dentro funzioni `async`.
+
+#### Esempio con `async` e `await`:
+
+```javascript
+const fs = require("fs").promises; // Usa l'API Promises di fs per un approccio asincrono moderno
+
+// Funzione asincrona che legge un file
+async function readFileAsync() {
+  try {
+    const data = await fs.readFile("file.txt", "utf8"); // Aspetta il risultato della lettura
+    console.log("Contenuto del file:", data); // Viene eseguito dopo che il file è stato letto
+  } catch (err) {
+    console.error("Errore:", err);
+  }
+}
+
+readFileAsync(); // Esegue la funzione asincrona
+
+console.log("Operazione in corso..."); // Questo viene eseguito prima della lettura del file
+```
+
+### Spiegazione:
+
+1. **`fs.readFile` con `promises`**: In questo caso, stiamo utilizzando la versione "promessa" dell'API `fs` (`fs.promises`), che restituisce una **Promise**.
+2. **`async`**: La funzione `readFileAsync` è dichiarata come `async`, il che significa che restituirà una **Promise**.
+
+3. **`await`**: Dentro la funzione `async`, `await` viene usato per aspettare che la Promise restituita da `fs.readFile` venga risolta. Questo rende il codice più leggibile e sembra sincrono, ma non blocca l'esecuzione.
+
+4. **Flusso di esecuzione**:
+   - **`console.log('Operazione in corso...')`** viene eseguito prima della lettura del file.
+   - Quando la lettura del file è completata, i dati vengono mostrati con `console.log`.
+
+### Perché usare `async/await`?
+
+- **Leggibilità**: Il codice asincrono con `async/await` è più facile da leggere rispetto alla gestione tradizionale con callback o catene di `.then()`.
+- **Meno callback annidate**: L'uso di `async/await` riduce il rischio di **callback hell** (un problema comune quando si utilizzano molte callback annidate).
+- **Flusso sincrono, ma asincrono**: Il codice sembra sincrono, ma non blocca mai l'esecuzione, rendendolo perfetto per gestire operazioni I/O.
+
+Con questo approccio, possiamo scrivere codice asincrono che è molto più facile da capire e mantenere, pur ottenendo tutti i benefici della non bloccatità di Node.js.
+
+#### Esempio di un semplice server Node.js:
+
+```javascript
+const http = require("http"),
+  server = http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello, World!");
+  });
+
+server.listen(3000, () => {
+  console.log("Server is running on http://localhost:3000");
+});
+```
+
+In questo esempio, il server risponde con "Hello, World!" a qualsiasi richiesta HTTP.
+
+### Architettura di un'applicazione full-stack
+
+In un'applicazione **full-stack**, il **frontend** potrebbe essere gestito con JavaScript (es. con framework come React o Vue.js) e il **backend** con Node.js. La comunicazione tra frontend e backend avviene tramite richieste HTTP, tipicamente usando il **REST API** o **GraphQL**.
+
+- **Frontend:** JavaScript eseguito nel browser (client-side) in ambienti come Chrome, Firefox, Safari, che utilizzano una macchina virtuale JavaScript integrata nel browser.
+- **Backend:** JavaScript eseguito su un server, spesso con Node.js. Il server può essere ospitato su una macchina virtuale (VM) o un server fisico, o su piattaforme di cloud computing.
+
+### Esempio di flusso completo:
+
+1. **Frontend** (React o Vue.js) invia una richiesta HTTP al **Backend** (Node.js).
+2. **Backend** (Node.js) riceve la richiesta, la elabora e invia una risposta, ad esempio accedendo a un database.
+3. La risposta viene visualizzata nel **Frontend**.
+
+Se hai altre domande o vuoi esplorare un esempio più dettagliato, fammi sapere!
+
+# Progetti (Esercizi)
+
+- [1 Progetto](Progetti/1_Progetto/)
