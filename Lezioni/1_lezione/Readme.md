@@ -48,7 +48,6 @@
   - [5xx](#-5xx--errori-del-server)
   - [Riassunto](#-riassunto)
 
-
 ## Server
 
 Un **server** è un sistema informatico che gestisce dati, applicazioni e servizi che vengono richiesti dai **client**. Può essere un computer fisico o una macchina virtuale che risponde alle richieste provenienti dalla rete.
@@ -372,18 +371,19 @@ Quando un client (browser, app, ecc.) invia una richiesta a un server, quest'ult
 
 > Il problema è causato dal client (es. richiesta errata, autenticazione fallita, risorsa non trovata).
 
-| **Codice**                 | **Significato**                                                                                                | **Descrizione** |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------- |
-| **400** Bad Request        | La richiesta ha una sintassi errata o parametri non validi.                                                    |
-| **401** Unauthorized       | Autenticazione richiesta ma non fornita o non valida.                                                          |
-| **403** Forbidden          | Il server ha capito la richiesta, ma il client non ha i permessi per accedere.                                 |
-| **404** Not Found          | La risorsa richiesta non esiste.                                                                               |
-| **405** Method Not Allowed | Il metodo HTTP utilizzato non è supportato dalla risorsa richiesta.                                            |
-| **408** Request Timeout    | Il server ha impiegato troppo tempo ad attendere la richiesta.                                                 |
-| **409** Conflict           | C'è un conflitto con lo stato attuale della risorsa (es. due utenti che tentano di modificare lo stesso dato). |
-| **429** Too Many Requests  | Il client ha inviato troppe richieste in un breve periodo di tempo (rate limiting).                            |
+| **Codice**                            | **Significato**                                                                                                                   | **Descrizione** |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **400** Bad Request                   | La richiesta ha una sintassi errata o parametri non validi.                                                                       |
+| **401** Unauthorized                  | Autenticazione richiesta ma non fornita o non valida.                                                                             |
+| **403** Forbidden                     | Il server ha capito la richiesta, ma il client non ha i permessi per accedere.                                                    |
+| **404** Not Found                     | La risorsa richiesta non esiste.                                                                                                  |
+| **405** Method Not Allowed            | Il metodo HTTP utilizzato non è supportato dalla risorsa richiesta.                                                               |
+| **408** Request Timeout               | Il server ha impiegato troppo tempo ad attendere la richiesta.                                                                    |
+| **409** Conflict                      | C'è un conflitto con lo stato attuale della risorsa (es. due utenti che tentano di modificare lo stesso dato).                    |
+| **429** Too Many Requests             | Il client ha inviato troppe richieste in un breve periodo di tempo (rate limiting).                                               |
+| **451** Unavailable for Legal Reasons | La risorsa richiesta è stata bloccata per motivi legali, ad esempio a causa di restrizioni governative o violazioni di copyright. |
 
----
+## Se hai bisogno di altre modifiche, fammelo sapere! 😊
 
 ## **🔥 5xx – Errori del Server**
 
