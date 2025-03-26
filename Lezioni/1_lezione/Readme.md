@@ -52,7 +52,7 @@
   - [Cos è Header HTTP](#cosè-un-header-http)
   - [Perchè nascondere Header](#perché-nascondere-gli-header)
   - [Come nascondere Header](#come-nascondere-gli-header-http)
-- [Conclusioni](#conclusioni)
+  - [Conclusioni](#conclusioni)
 
 - [Content-Type](#content-type)
   - [Struttura del Content-Type](#struttura-del-content-type)
