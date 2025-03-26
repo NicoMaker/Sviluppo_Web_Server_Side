@@ -78,6 +78,8 @@
 
 - [Progetti (Esercizi)](#progetti-esercizi)
 
+- [Inizializza progetto node](#inizializa-progetto-node))
+
 - [Installi pacchetto in NodeJs](#installi-pacchetto-in-nodejs)
 
 ## Server
@@ -684,6 +686,13 @@ Se hai altre domande o vuoi esplorare un esempio più dettagliato, fammi sapere!
 npm install <nome progetto>
 nvm install versione
 nvm use versione 
+```
+
+# inizializa Progetto node
+
+```bash
+npm init    # crea un file package.json
+npm init -y # crea un file package.json vuoto e dice sempre si alle domande
 ```
 
 # Progetti (Esercizi)
