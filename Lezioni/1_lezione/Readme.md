@@ -49,6 +49,7 @@
   - [Riassunto](#-riassunto)
 
 - [Header della risposta](#header-della-risposta)
+
   - [Cos è Header HTTP](#cosè-un-header-http)
   - [Perchè nascondere Header](#perché-nascondere-gli-header)
   - [Come nascondere Header](#come-nascondere-gli-header-http)
@@ -58,7 +59,6 @@
   - [Struttura del Content-Type](#struttura-del-content-type)
   - [Esempio di Utilizzo](#esempio-di-utilizzo-del-content-type)
   - [Perchè è Importante](#perché-è-importante)
-
 
 ## Server
 
@@ -451,9 +451,9 @@ Nascondere alcuni header nelle risposte HTTP è una pratica di sicurezza importa
      Puoi usare il middleware `helmet` che aiuta a configurare una serie di header di sicurezza, tra cui la rimozione del header `X-Powered-By`:
 
      ```javascript
-     const express = require("express");
-     const helmet = require("helmet");
-     const app = express();
+     const express = require("express"),
+       helmet = require("helmet"),
+       app = express();
 
      app.use(helmet()); // Aggiunge header di sicurezza e rimuove "X-Powered-By".
      ```
