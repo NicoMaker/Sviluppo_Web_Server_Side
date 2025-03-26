@@ -567,6 +567,8 @@ In Node.js, il modello **asincrono** e **non bloccante** significa che il codice
 
 Quando l'operazione I/O è terminata, **callback** o **promise** si occupano di gestire la risposta, permettendo al flusso di esecuzione di rimanere libero da blocchi.
 
+Una callback in programmazione è una funzione che viene passata come argomento a un'altra funzione e viene eseguita dopo che un determinato compito o operazione è stata completata. Le callback sono utilizzate per gestire operazioni asincrone, come la gestione di eventi, la lettura di file, o l'esecuzione di una richiesta di rete.
+
 #### Esempio senza async/await (usando callback):
 
 Immagina di voler leggere un file e poi restituire il contenuto.
