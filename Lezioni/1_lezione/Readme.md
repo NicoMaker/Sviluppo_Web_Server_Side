@@ -682,6 +682,8 @@ Se hai altre domande o vuoi esplorare un esempio più dettagliato, fammi sapere!
 
 ```bash
 npm install <nome progetto>
+nvm install versione
+nvm use versione 
 ```
 
 # Progetti (Esercizi)
