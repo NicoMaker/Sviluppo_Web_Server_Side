@@ -76,11 +76,13 @@
   - [Architettura di un'applicazione full-stack](#architettura-di-unapplicazione-full-stack)
   - [Esempio di flusso completo](#esempio-di-flusso-completo)
 
-- [Progetti (Esercizi)](#progetti-esercizi)
 
 - [Inizializza progetto node](#inizializa-progetto-node))
 
 - [Installi pacchetto in NodeJs](#installi-pacchetto-in-nodejs)
+
+- [Progetti (Esercizi)](#progetti-esercizi)
+
 
 ## Server
 
