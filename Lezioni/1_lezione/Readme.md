@@ -77,7 +77,7 @@
   - [Esempio di flusso completo](#esempio-di-flusso-completo)
 
 
-- [Inizializza progetto node](#inizializa-progetto-node))
+- [Inizializza progetto node](#inizializa-progetto-node)
 
 - [Installi pacchetto in NodeJs](#installi-pacchetto-in-nodejs)
 
