@@ -10,6 +10,7 @@
 - [JSON](#json)
 - [Array](#array)
 - [Funzione](#definizione-di-una-funzione)
+- [Classi](#classi)
 - [Progetti (Esercizi)](#progetti-esercizi)
 
 ## Uso Watch in node
@@ -326,6 +327,97 @@ faiQualcosaConCallback(function (x) {
 
 Le funzioni in JavaScript sono versatili e possono essere definite in vari modi (dichiarazione, espressione, freccia). Possono ricevere parametri, restituire valori e essere trattate come oggetti. Utilizzare funzioni ti permette di scrivere codice modulare, riutilizzabile e chiaro.
 La funzione viene usata per ripetere le opzioni più volte.
+
+## CLassi
+
+In **JavaScript**, una **classe** è un modello per creare oggetti basato sulla sintassi **ES6 (ECMAScript 2015)**. Fornisce un modo più strutturato per lavorare con la programmazione orientata agli oggetti rispetto alla semplice creazione di oggetti tramite funzioni costruttore.
+
+### **Sintassi di base**
+
+```js
+class Persona {
+  constructor(nome, eta) {
+    this.nome = nome;
+    this.eta = eta;
+  }
+
+  saluta() {
+    return `Ciao, mi chiamo ${this.nome} e ho ${this.eta} anni.`;
+  }
+}
+
+// Creazione di un'istanza della classe
+const persona1 = new Persona("Luca", 25);
+console.log(persona1.saluta()); // Output: Ciao, mi chiamo Luca e ho 25 anni.
+```
+
+---
+
+### **Caratteristiche principali delle classi in JavaScript**
+
+1. **Costruttore (`constructor`)**
+   - È un metodo speciale usato per inizializzare l'oggetto quando viene creata un'istanza della classe.
+2. **Metodi**
+
+   - I metodi definiti all'interno della classe sono automaticamente aggiunti al **prototype** degli oggetti creati.
+
+3. **Ereditarietà (`extends`)**
+
+   - Le classi possono **estendere** altre classi per ereditare proprietà e metodi.
+
+   ```js
+   class Studente extends Persona {
+     constructor(nome, eta, corso) {
+       super(nome, eta); // Chiama il costruttore della classe padre
+       this.corso = corso;
+     }
+
+     infoCorso() {
+       return `${this.nome} studia ${this.corso}.`;
+     }
+   }
+
+   const studente1 = new Studente("Anna", 22, "Informatica");
+   console.log(studente1.infoCorso()); // Output: Anna studia Informatica.
+   ```
+
+4. **Metodi Statici (`static`)**
+
+   - Metodi che possono essere chiamati senza creare un'istanza della classe.
+
+   ```js
+   class Matematica {
+     static somma(a, b) {
+       return a + b;
+     }
+   }
+
+   console.log(Matematica.somma(5, 3)); // Output: 8
+   ```
+
+5. **Proprietà e Metodi Privati (`#`)** _(ES2020+)_
+
+   - Le proprietà e i metodi privati sono accessibili solo all'interno della classe.
+
+   ```js
+   class ContoBancario {
+     #saldo = 1000; // Proprietà privata
+
+     getSaldo() {
+       return `Il saldo disponibile è €${this.#saldo}`;
+     }
+   }
+
+   const conto = new ContoBancario();
+   console.log(conto.getSaldo()); // Output: Il saldo disponibile è €1000
+   // console.log(conto.#saldo); // Errore: Proprietà privata non accessibile
+   ```
+
+---
+
+### **Conclusione**
+
+Le classi in JavaScript rendono il codice più leggibile e organizzato, fornendo una sintassi più chiara rispetto alle funzioni costruttore e alla manipolazione diretta del `prototype`. 🚀
 
 ### Progetti (Esercizi)
 
