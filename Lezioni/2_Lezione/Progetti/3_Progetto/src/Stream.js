@@ -16,6 +16,13 @@ reader.on("close", function (_chunk) {
   console.log("Stream: close");
 });
 
+// Si ascolta l'evento "data" emesso dal flusso `reader`
+// Ogni volta che il flusso riceve nuovi dati (chunk), questa funzione viene invocata
+reader.on("data", function (chunk) {
+  // I dati (chunk) vengono stampati sulla console
+  console.log(chunk);
+});
+
 // Utilizza il metodo `pipe()` per trasferire i dati dallo stream 'reader' allo stream 'writer'.
 // Questo consente di leggere i dati in ingresso e scriverli direttamente nell'output.
 // reader.pipe(writer);
