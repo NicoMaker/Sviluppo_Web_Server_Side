@@ -4,9 +4,18 @@ const fs = require("fs"); // Importa il modulo 'fs' per lavorare con il file sys
 const reader = fs.createReadStream("Data/Social.json"),
   writer = fs.createWriteStream("Data/Social2.json");
 
-// reader.on("data", function (chunk) {
-//   console.log(); // Qui dovresti specificare cosa stampare, ad esempio 'console.log(chunk.toString());'
-// });
+// Quando lo stream 'reader' viene aperto, viene attivato l'evento "open".
+// La funzione di callback viene eseguita e stampa "Stream: open" nella console.
+reader.on("open", function (_chunk) {
+  console.log("Stream: open");
+});
 
-reader.pipe(writer); // Collega lo stream di lettura a quello di scrittura e metti i dati da una parte all'altra corretta facendo copie di dati
+// Quando lo stream 'reader' viene chiuso, viene attivato l'evento "close".
+// La funzione di callback viene eseguita e stampa "Stream: close" nella console.
+reader.on("close", function (_chunk) {
+  console.log("Stream: close");
+});
 
+// Utilizza il metodo `pipe()` per trasferire i dati dallo stream 'reader' allo stream 'writer'.
+// Questo consente di leggere i dati in ingresso e scriverli direttamente nell'output.
+// reader.pipe(writer);
