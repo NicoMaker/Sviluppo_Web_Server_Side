@@ -37,13 +37,21 @@ server.get("/data", (_req, res) => {
     }
 
     try {
-      const jsonData = JSON.parse(data); 
+      const jsonData = JSON.parse(data);
       res.json(jsonData);
     } catch (parseErr) {
       console.error("Errore nel parsing del JSON:", parseErr);
       res.status(500).send({ errore: "Errore nel formato dei dati" });
     }
   });
+});
+
+server.use("/dati", express.static("Data/CV")); // Serve file statici dalla cartella 'Data/CV' ed estende il contenuto di tutta la cartella
+
+server.get("/attestati", (_req, res) => {
+  const attestaticontent = require("../Data/CV/Attestati.json");
+
+  res.send(attestaticontent);
 });
 
 server.listen(port, host, () =>
