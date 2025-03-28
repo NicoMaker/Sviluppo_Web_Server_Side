@@ -4,4 +4,6 @@
 
 ## Legenda
 
-- [Es]
+- [Progetti (Esercizi)](#progetti-esercizi)
+
+### Progetti (Esercizi)
