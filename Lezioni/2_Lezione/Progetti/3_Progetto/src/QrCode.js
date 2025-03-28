@@ -10,7 +10,7 @@ qrcode.toDataURL("Hello world", (_err, qrstring) => {
   console.log(qrstring); // Stampa il DataURL nella console
 });
 
-qrcode.toFile('qrcode.png', 'Hello world') // Genera un file PNG con il codice QR
+qrcode.toFile('Data/qrcode.png', 'Hello world') // Genera un file PNG con il codice QR
 
 qrcode.toFile('qrcode.png', 'Hello world', {
     width: 10 // Imposta la larghezza del codice QR

@@ -3,7 +3,8 @@ const express = require("express"),
   path = require("path"),
   server = express(),
   host = `127.0.0.1`,
-  port = 3000;
+  port = 3000,
+  qrcode = require("qrcode");
 
 server.get("/", (_req, res) => {
   res.send("Hello World!");
@@ -46,15 +47,13 @@ server.get("/data", (_req, res) => {
   });
 });
 
-server.use("/dati", express.static("Data/CV")); // Serve file statici dalla cartella 'Data/CV' ed estende il contenuto di tutta la cartella
+server.use("/dati", express.static("Data")); // Serve file statici dalla cartella 'Data/CV' ed estende il contenuto di tutta la cartella
 
 server.get("/attestati", (_req, res) => {
   const attestaticontent = require("../Data/CV/Attestati.json");
 
   res.send(attestaticontent);
 });
-
-
 
 server.listen(port, host, () =>
   console.log(`Server running at http://${host}:${port}/`)
