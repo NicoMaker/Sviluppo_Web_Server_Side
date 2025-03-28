@@ -682,7 +682,7 @@ In un'applicazione **full-stack**, il **frontend** potrebbe essere gestito con J
 Se hai altre domande o vuoi esplorare un esempio più dettagliato, fammi sapere!
 
 
-## Installi pacchetto in NodeJs
+### Installi pacchetto in NodeJs
 
 ```bash
 npm install <nome progetto>
@@ -690,13 +690,13 @@ nvm install versione
 nvm use versione 
 ```
 
-# inizializa Progetto node
+### inizializa Progetto node
 
 ```bash
 npm init    # crea un file package.json
 npm init -y # crea un file package.json vuoto e dice sempre si alle domande
 ```
 
-# Progetti (Esercizi)
+### Progetti (Esercizi)
 
 - [1 Progetto](Progetti/1_Progetto/)
