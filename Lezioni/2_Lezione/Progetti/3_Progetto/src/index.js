@@ -3,8 +3,7 @@ const express = require("express"),
   path = require("path"),
   server = express(),
   host = `127.0.0.1`,
-  port = 3000,
-  qrcode = require("qrcode");
+  port = 3000;
 
 server.get("/", (_req, res) => {
   res.send("Hello World!");
@@ -55,7 +54,8 @@ server.get("/attestati", (_req, res) => {
   res.send(attestaticontent);
 });
 
+
+
 server.listen(port, host, () =>
   console.log(`Server running at http://${host}:${port}/`)
 );
-
