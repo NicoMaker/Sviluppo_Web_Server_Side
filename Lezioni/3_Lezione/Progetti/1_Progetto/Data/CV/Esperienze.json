@@ -1,0 +1,40 @@
+[
+    {
+      "azienda": "Omniaevo",
+      "ruolo": "Stage Curricolare",
+      "periodo": "[08/01/2024 – 29/03/2024]",
+      "luogo": "Codroipo UD",
+      "attivita": [
+        "Utilizzo di una piattaforma per la lettura dei dati telemetrici della scheda Raspberry (RAM, ROM, CPU, Ingressi e Uscite digitali) attraverso il protocollo MQTT."
+      ],
+      "logo": "Loghi/Omniaevo.png",
+      "sito": "https://www.omniaevo.it/"
+    },
+    {
+      "azienda": "Omniaevo",
+      "ruolo": "Stage Curricolare",
+      "periodo": "[12/06/2023 – 04/08/2023]",
+      "luogo": "Codroipo UD",
+      "attivita": [
+        "Scrittura di siti web in HTML, CSS e JS.",
+        "Applicazione con l'ASP.NET, collegato a C#, che tramite una web app gestiva anche HTML, CSS e JS.",
+        "Affiancamento degli operatori dell'azienda nell'attività di programmazione."
+      ],
+      "logo": "Loghi/Omniaevo.png",
+      "sito": "https://www.omniaevo.it/"
+    },
+    {
+      "azienda": "Omniaevo",
+      "ruolo": "PCTO",
+      "periodo": "[12/10/2021 – 29/10/2021]",
+      "luogo": "Codroipo UD",
+      "attivita": [
+        "Gestione di schede elettriche con il linguaggio C.",
+        "Utilizzo protocollo MODBUS.",
+        "Attività di Web development.",
+        "Affiancamento degli operatori dell'azienda, per lo più giovani neolaureati in informatica, nell'attività di programmazione."
+      ],
+      "logo": "Loghi/Omniaevo.png",
+      "sito": "https://www.omniaevo.it/"
+    }
+  ]

@@ -1,0 +1,16 @@
+GET http://127.0.0.1:3000/
+
+### 
+GET http://127.0.0.1:3000/json
+
+###
+GET http://127.0.0.1:3000/data
+
+###
+GET http://127.0.0.1:3000/dati/CV/attestati.json
+
+###
+GET http://127.0.0.1:3000/dati/qrcode.png
+
+###
+GET http://127.0.0.1:3000/attestati
