@@ -6,13 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
-    "server": "node --watch src/Server.js"
+    "server": "node --watch src/Server.js",
+    "db": "node --watch src/Server_DB.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
   }
 }
