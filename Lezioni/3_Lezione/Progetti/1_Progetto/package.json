@@ -9,7 +9,7 @@
     "server": "node --watch src/Server.js",
     "db": "node src/Db.js",
     "server2": "node --watch src/Server2.js",
-    "frontend": "serve -l 4000 public/index.html"
+    "frontend": "serve -p 4000 public"
   },
   "keywords": [],
   "author": "",
