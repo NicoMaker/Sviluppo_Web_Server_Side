@@ -74,9 +74,8 @@ server.put("/timeline/:id", (req, res) => {
   const id = parseInt(req.params.id),
     index = timelineContent.findIndex((item) => item.id === id);
 
-  if (index === -1) {
+  if (index === -1)
     return res.status(404).json({ message: "ID non trovato", status: 404 });
-  }
 
   const { titolo, testo, data } = req.body;
   if (!titolo || !testo || !data)
@@ -111,9 +110,6 @@ server.delete("/timeline/:id", (req, res) => {
 
   if (index === -1)
     return res.status(404).json({ message: "ID non trovato", status: 404 });
-
-  // Prendi l'elemento da eliminare
-  const deletedItem = timelineContent[index];
 
   // Elimina l'elemento
   timelineContent.splice(index, 1);
