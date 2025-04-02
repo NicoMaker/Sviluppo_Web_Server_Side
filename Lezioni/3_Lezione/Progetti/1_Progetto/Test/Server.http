@@ -3,14 +3,11 @@ GET http://localhost:3000/timeline
 Accept: application/json
 
 
-###
 
 ### Ottieni un elemento della timeline per ID
 GET http://localhost:3000/timeline/1
 Accept: application/json
 
-
-###
 
 ### Aggiungi un nuovo elemento alla timeline
 POST http://localhost:3000/timeline
@@ -24,7 +21,6 @@ Content-Type: application/json
 }
 
 ### 
-
 POST http://localhost:3000/timelinemany
 Content-Type: application/json
 
@@ -43,8 +39,6 @@ Content-Type: application/json
   }
 ]
 
-###
-
 ### Modifica un elemento della timeline esistente (PUT - sostituisce tutto)
 PUT http://localhost:3000/timeline/1
 Content-Type: application/json
@@ -57,8 +51,6 @@ Content-Type: application/json
 }
 
 
-###
-
 ### Aggiorna parzialmente un elemento della timeline (PATCH - modifica solo un campo)
 PATCH http://localhost:3000/timeline/1
 Content-Type: application/json
@@ -68,13 +60,10 @@ Content-Type: application/json
 }
 
 
-###
-
 ### Elimina un elemento della timeline
 DELETE http://localhost:3000/timeline/3
 
 
-###
 DELETE http://localhost:3000/timelinemany
 Content-Type: application/json
 
@@ -83,5 +72,4 @@ Content-Type: application/json
 }
 
 ### 
-
 DELETE http://localhost:3000/deleteall
