@@ -1,60 +1,30 @@
 const express = require("express"),
-  fs = require("fs"),
-  path = require("path"),
+  qrcode = require("qrcode"),
   server = express(),
-  host = `127.0.0.1`,
-  port = 3000,
-  qrcode = require("qrcode");
+  port = 3000;
 
-server.get("/", (_req, res) => {
-  res.send("Hello World!");
+// le chiamate a '/data/timeline.json' rispondono con il
+// contenuto del file 'data/timeline.json'
+server.use("/data", express.static("data"));
+
+// le chiamate a '/timeline' rispondono con il contenuto
+// del file 'data/timeline.json'
+server.get("/timeline", (_req, res) => {
+  const timelineContent = require("../data/timeline.json");
+
+  res.send(timelineContent);
 });
 
-server.get("/home", (_req, res) => {
-  res.send("Benvenuto su Home!");
+server.get("/", (_req, res) => {
+  res.send("Hello world");
 });
 
 server.get("/json", (_req, res) => {
-  const rispostajson = {
-    nome: "Marco",
-    cognome: "Rossi",
-    eta: 30,
-  };
+  const rispostaJson = { nome: "pippo" };
 
-  res.send(rispostajson);
+  res.send(rispostaJson);
 });
 
-server.get("/data", (_req, res) => {
-  const filePath = path.join(__dirname, "../Data/CV", "Competenze.json");
-
-  console.log(`Sto cercando il file in: ${filePath}`); // Aggiungi un log per vedere il percorso
-
-  // Leggi il file JSON
-  fs.readFile(filePath, "utf8", (err, data) => {
-    if (err) {
-      console.error("Errore nella lettura del file JSON:", err);
-      res.status(500).send({ errore: "Errore nella lettura dei dati" });
-      return;
-    }
-
-    try {
-      const jsonData = JSON.parse(data);
-      res.json(jsonData);
-    } catch (parseErr) {
-      console.error("Errore nel parsing del JSON:", parseErr);
-      res.status(500).send({ errore: "Errore nel formato dei dati" });
-    }
-  });
+server.listen(port, () => {
+  console.log("server in ascolto!");
 });
-
-server.use("/dati", express.static("Data")); // Serve file statici dalla cartella 'Data/CV' ed estende il contenuto di tutta la cartella
-
-server.get("/attestati", (_req, res) => {
-  const attestaticontent = require("../Data/CV/Attestati.json");
-
-  res.send(attestaticontent);
-});
-
-server.listen(port, host, () =>
-  console.log(`Server running at http://${host}:${port}/`)
-);

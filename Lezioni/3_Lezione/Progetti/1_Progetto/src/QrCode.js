@@ -1,22 +1,5 @@
-const qrcode = require("qrcode"); // Importa la libreria 'qrcode'
+const qrcode = require("qrcode");
 
-// Genera un codice QR come stringa ASCII
-qrcode.toString("Hello world", (_err, qrstring) => {
-  console.log(qrstring); // Stampa il codice QR in formato ASCII nella console
+qrcode.toFile("data/qrcode.png", "Hello world", {
+  errorCorrectionLevel: "H",
 });
-
-// Genera un codice QR come URL immagine in formato DataURL (base64)
-qrcode.toDataURL("Hello world", (_err, qrstring) => {
-  console.log(qrstring); // Stampa il DataURL nella console
-});
-
-qrcode.toFile('Data/qrcode.png', 'Hello world') // Genera un file PNG con il codice QR
-
-qrcode.toFile('qrcode.png', 'Hello world', {
-    width: 10 // Imposta la larghezza del codice QR
-})
-
-
-qrcode.toFile('qrcode.png', 'Hello world', {
-    errorCorrectionLevel: 'H'
-}) // Imposta il livello di correzione degli errori
