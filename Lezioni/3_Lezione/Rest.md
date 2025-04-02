@@ -66,6 +66,8 @@ Risposta
 
 ## PATCH /timeline/:id
 
+una parte o anche tutto ma almeno una parte
+
 ```JSON
 {
   "role": "Sviluppatore Lead",
