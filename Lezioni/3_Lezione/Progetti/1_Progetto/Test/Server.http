@@ -23,6 +23,25 @@ Content-Type: application/json
     "data": "2025-04-02"
 }
 
+### 
+
+POST http://localhost:3000/timelinemany
+Content-Type: application/json
+
+[
+  {
+    "id": 3,
+    "titolo": "Nuova notizia",
+    "testo": "Dettagli della nuova notizia",
+    "data": "2025-04-02"
+  },
+  {
+    "id": 4,
+    "titolo": "Nuova notizia",
+    "testo": "Dettagli della nuova notizia",
+    "data": "2025-04-02"
+  }
+]
 
 ###
 
@@ -56,3 +75,13 @@ DELETE http://localhost:3000/timeline/3
 
 
 ###
+DELETE http://localhost:3000/timelinemany
+Content-Type: application/json
+
+{
+  "ids": [3, 4]
+}
+
+### 
+
+DELETE http://localhost:3000/deleteall
