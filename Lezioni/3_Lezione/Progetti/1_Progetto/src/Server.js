@@ -58,11 +58,10 @@ server.post("/timeline", (req, res) => {
 
   let timelineContent = readData();
   const newId =
-    timelineContent.length > 0
-      ? Math.max(...timelineContent.map((item) => item.id)) + 1
-      : 1;
-
-  const newEntry = { id: newId, titolo, testo, data };
+      timelineContent.length > 0
+        ? Math.max(...timelineContent.map((item) => item.id)) + 1
+        : 1,
+    newEntry = { id: newId, titolo, testo, data };
   timelineContent.push(newEntry);
 
   writeData(timelineContent);
