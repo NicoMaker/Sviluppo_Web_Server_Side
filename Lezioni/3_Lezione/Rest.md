@@ -44,7 +44,6 @@ Risposta
 
 ```JSON
 {
-  "id": 3,
   "year": 2023,
   "company": "ALPHA",
   "role": "Sviluppatore Web",
