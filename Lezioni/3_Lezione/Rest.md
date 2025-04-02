@@ -1,4 +1,4 @@
-[Vai al file Generale](3_Lezione.md)
+[Vai al file della 3 Lezione](3_Lezione.md)
 
 # Rotte dell'applicazione
 

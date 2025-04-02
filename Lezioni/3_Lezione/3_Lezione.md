@@ -8,8 +8,9 @@
 - [Progetti (Esercizi)](#progetti-esercizi)
 - [Moduli Nativi](#moduli-nativi)
 - [Metodi CRUD](#metodi-crud)
-
 - [Metodi CRUD file](Rest.md)
+- [Progetti (Esercizi)](#progetti-esercizi)
+
 
 ## Intro Node
 
