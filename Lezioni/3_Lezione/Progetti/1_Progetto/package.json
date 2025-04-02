@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "server": "node --watch src/Server.js",
-    "db": "node --watch src/Server_DB.js"
+    "Db": "node --watch src/Db.js",
+    "server2": "node --watch src/Server2.js"
   },
   "keywords": [],
   "author": "",

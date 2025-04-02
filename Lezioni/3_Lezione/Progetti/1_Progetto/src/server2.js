@@ -33,6 +33,14 @@ server.put("/timeline/:id", (req, res) => {
   res.send(`ok PUT con id ${req.params.id}`);
 });
 
+server.patch("/timeline/:id", (req, res) => {
+  res.send(`ok PATCH con id ${req.params.id}`);
+});
+
+server.delete("/timeline/:id", (req, res) => {
+  res.send(`ok DELETE con id ${req.params.id}`);
+});
+
 server.listen(port, () => {
   console.log("server in ascolto!");
 });
