@@ -1,60 +1,10 @@
 [
   {
-    "id": 1,
-    "firstName": "Mario",
-    "lastName": "Rossi",
-    "email": "mario.rossi@example.com",
-    "phone": "3331234567",
-    "birthDate": "1980-05-15",
-    "address": "Via Roma 123, Milano",
-    "notes": "Cliente abituale"
-  },
-  {
-    "id": 2,
-    "firstName": "Anna",
-    "lastName": "Verdi",
-    "email": "anna.verdi@example.com",
-    "phone": "3387654321",
-    "birthDate": "1992-10-20",
-    "address": "Via Garibaldi 45, Roma",
-    "notes": ""
-  },
-  {
-    "id": 3,
-    "firstName": "Luca",
-    "lastName": "Bianchi",
-    "email": "luca.bianchi@example.com",
-    "phone": "3399876543",
-    "birthDate": "1975-03-08",
-    "address": "Corso Italia 78, Torino",
-    "notes": "Contattare preferibilmente via email"
-  },
-  {
-    "id": 4,
-    "firstName": "cc",
-    "lastName": "ccc",
-    "email": "fds@gmail.com",
-    "phone": "87",
-    "birthDate": "",
-    "address": "",
-    "notes": ""
-  },
-  {
-    "id": 5,
-    "firstName": "ff",
-    "lastName": "fff",
-    "email": "fds@gmail.com",
-    "phone": "444",
-    "birthDate": "",
-    "address": "",
-    "notes": ""
-  },
-  {
-    "id": 6,
-    "firstName": "ff",
-    "lastName": "fff",
-    "email": "fds@gmail.com",
-    "phone": "444",
+    "id": 1743595943951,
+    "firstName": "prova",
+    "lastName": "r5gt6",
+    "email": "fdsf@gmail.com",
+    "phone": "5555",
     "birthDate": "",
     "address": "",
     "notes": ""
