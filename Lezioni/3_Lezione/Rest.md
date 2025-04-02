@@ -56,7 +56,6 @@ Risposta
 
 ```JSON
 {
-  "id": 2,
   "year": 2024,
   "company": "SIGMA",
   "role": "Sviluppatore Senior",
@@ -69,7 +68,6 @@ Risposta
 
 ```JSON
 {
-  "id": 2,
   "role": "Sviluppatore Lead",
   "link": "https://newlink.com"
 }
