@@ -1,6 +1,6 @@
 [
   {
-    "id": 1743582723975,
+    "id": 1,
     "firstName": "Mario",
     "lastName": "Rossi",
     "email": "mario.rossi@example.com",
@@ -10,7 +10,7 @@
     "notes": "Cliente abituale"
   },
   {
-    "id": 1743582723976,
+    "id": 2,
     "firstName": "Anna",
     "lastName": "Verdi",
     "email": "anna.verdi@example.com",
@@ -20,7 +20,7 @@
     "notes": ""
   },
   {
-    "id": 1743582723977,
+    "id": 3,
     "firstName": "Luca",
     "lastName": "Bianchi",
     "email": "luca.bianchi@example.com",
@@ -30,7 +30,7 @@
     "notes": "Contattare preferibilmente via email"
   },
   {
-    "id": 1743583777077,
+    "id": 4,
     "firstName": "cc",
     "lastName": "ccc",
     "email": "fds@gmail.com",
@@ -40,7 +40,7 @@
     "notes": ""
   },
   {
-    "id": 1743585829630,
+    "id": 5,
     "firstName": "ff",
     "lastName": "fff",
     "email": "fds@gmail.com",
@@ -50,7 +50,7 @@
     "notes": ""
   },
   {
-    "id": 1743585829630,
+    "id": 6,
     "firstName": "ff",
     "lastName": "fff",
     "email": "fds@gmail.com",
