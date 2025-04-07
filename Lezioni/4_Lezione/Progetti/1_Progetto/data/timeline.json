@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titolo": "Notizia modificata",
+    "testo": "Testo modificato",
+    "data": "2026"
+  },
+  {
+    "id": 2,
+    "titolo": "notizia di prova 2",
+    "testo": "testo della notizia 2",
+    "data": "2025-03-28"
+  },
+  {
+    "id": 3,
+    "titolo": "Nuova notizia",
+    "testo": "Dettagli della nuova notizia",
+    "data": "2025-04-02"
+  },
+  {
+    "id": 4,
+    "titolo": "Nuova notizia",
+    "testo": "Dettagli della nuova notizia",
+    "data": "2025-04-02"
+  }
+]
