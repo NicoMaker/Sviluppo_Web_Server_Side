@@ -24,47 +24,37 @@ db.serialize(() => {
 // inizio la configurazione, poi dovrò avviarlo
 
 // rispondo con il contenuto di "../data/timeline.json" a chi richiede la rotta "/timeline"
-server.get("/timeline", (_req, res) => {
-  // carico il json
-  const timelineContent = require("../data/timeline.json");
+server.get("/timeline", (req, res) => {
+  // usare db per pescare tutte le righe presenti nella tabella timeline
+  // e inviarle al client
+  db.all("SELECT rowid AS id, * FROM timeline", function (err, rows) {
+    if (err) {
+      console.error(err);
+      return res.status(400).send();
+    }
 
-  db.all(() => {
-    db.all("SELECT * FROM timeline", (err, rows) => {
-      if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: "Errore nel recupero dei dati" });
-      } else {
-        res.json(rows); // Manda i dati al client
-      }
-    });
+    return res.send(rows);
   });
-
-  // invio la risposta
-  res.send(timelineContent);
 });
 
 // chiamata con metodo "GET" su "/timeline/:id", ad esempio "/timeline/4"
 // attenzione che ogni elemento del URL è una stringa, 4 in questo caso è una stringa
 // rispondo con il singolo elemento, se presente, dentro il json indicato
 server.get("/timeline/:id", (req, res) => {
-  // carico il json
-  const timelineContent = require("../data/timeline.json");
+  db.get(
+    "SELECT rowid AS id, * FROM timeline WHERE rowid = $id",
+    {
+      $id: parseInt(req.params.id),
+    },
+    function (err, row) {
+      if (err) {
+        console.error(err);
+        return res.status(400).send();
+      }
 
-  // cerco se c'è nel json un elemento con id === al parametro ":id" che ricevo nel url
-  const item = timelineContent.find(
-    (item) => item.id === parseInt(req.params.id)
+      return res.status(row ? 200 : 404).send(row);
+    }
   );
-
-  // se non c'è mando 404 come status code e nessun contenuto
-  if (!item) {
-    return res.status(404).send();
-  }
-
-  // se invece c'è mostro un messaggio in console e...
-  console.log("tutto ok");
-
-  // ...invio l'oggetto che ho trovato
-  res.send(item);
 });
 
 // rispondo con "ok POST" alle chiamate con metodo "POST" che ricevo su "/timeline"
@@ -118,17 +108,9 @@ server.post("/timeline", (req, res) => {
 });
 
 // rispondo con "ok PUT con id..." alle chiamate con metodo "PUT" che ricevo su "/timeline/:id"
-server.put("/timeline/:id", (req, res) => {
-  res.status(202).send({
-    id: 100,
-    year: 2025,
-    company: "ACME",
-    role: "Sviluppatore Junior",
-    description:
-      "Lorem ipsum dolor sit amet, in Lorem duis veniam laborum ipsum nulla proident",
-    link: "https://google.com",
-  });
-});
+// esempio di query da eseguire
+// `UPDATE timeline SET year = 2025, company = "Bianchi" WHERE rowid = 75;`
+server.put("/timeline/:id", (req, res) => {});
 
 // rispondo con "ok PATCH con id..." alle chiamate con metodo "PATCH" che ricevo su "/timeline/:id"
 server.patch("/timeline/:id", (req, res) => {
@@ -145,24 +127,18 @@ server.patch("/timeline/:id", (req, res) => {
 
 // rispondo con "ok DELETE con id..." alle chiamate con metodo "DELETE" che ricevo su "/timeline/:id"
 server.delete("/timeline/:id", (req, res) => {
-  res.status(204).send();
+  db.serialize(() => {
+    db.run(
+      "DELETE FROM timeline WHERE rowid = $id",
+      {
+        $id: parseInt(req.params.id),
+      },
+      function () {
+        console.log("cancellazione", this);
 
-  db.delete = () => {
-    db.serialize(() => {
-      db.run("DELETE FROM timeline WHERE rowid = $id", {
-        $id: req.params.id,
-      });
-    });
-  };
-});
-
-server.delete("/timeline/:id", (req, res) => {
-  db.run("DELETE FROM timeline WHERE rowid = ?", req.params.id, (err) => {
-    if (err) return res.status(500).json({ error: err.message });
-    db.all("SELECT * FROM timeline", [], (err, rows) => {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json(rows);
-    });
+        return res.status(this.changes === 0 ? 406 : 204).send();
+      }
+    );
   });
 });
 
