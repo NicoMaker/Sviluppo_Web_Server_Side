@@ -1,4 +1,4 @@
-[vai a file generale della lezione](4_Lezione.md)
+[vai a file generale della lezione](../4_Lezione.md)
 
 # 📚 Esempi di codice per Node.js 🚀
 

@@ -1,0 +1,1 @@
+[vai a file generale della lezione](../4_Lezione.md)
