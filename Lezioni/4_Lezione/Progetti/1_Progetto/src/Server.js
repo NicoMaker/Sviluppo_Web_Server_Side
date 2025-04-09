@@ -110,7 +110,53 @@ server.post("/timeline", (req, res) => {
 // rispondo con "ok PUT con id..." alle chiamate con metodo "PUT" che ricevo su "/timeline/:id"
 // esempio di query da eseguire
 // `UPDATE timeline SET year = 2025, company = "Bianchi" WHERE rowid = 75;`
-server.put("/timeline/:id", (req, res) => {});
+server.put("/timeline/:id", (req, res) => {
+  db.serialize(() => {
+    db.run(
+      `UPDATE timeline 
+       SET year = $year, 
+           company = $company, 
+           role = $role, 
+           description = $description, 
+           link = $link 
+       WHERE rowid = $id`,
+      {
+        $id: parseInt(req.params.id),
+        $year: req.body.year,
+        $company: req.body.company,
+        $role: req.body.role,
+        $description: req.body.description,
+        $link: req.body.link,
+      },
+      function (err) {
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Errore durante l'aggiornamento");
+        }
+
+        if (this.changes === 0) {
+          return res.status(404).send("Elemento non trovato");
+        }
+
+        // recupero il record aggiornato da restituire
+        db.get(
+          "SELECT rowid AS id, * FROM timeline WHERE rowid = $id",
+          { $id: parseInt(req.params.id) },
+          function (err, row) {
+            if (err) {
+              console.error(err);
+              return res
+                .status(500)
+                .send("Errore nel recupero del dato aggiornato");
+            }
+
+            return res.status(200).send(row);
+          }
+        );
+      }
+    );
+  });
+});
 
 // rispondo con "ok PATCH con id..." alle chiamate con metodo "PATCH" che ricevo su "/timeline/:id"
 server.patch("/timeline/:id", (req, res) => {
