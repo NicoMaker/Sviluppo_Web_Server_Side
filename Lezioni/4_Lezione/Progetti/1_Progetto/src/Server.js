@@ -1,8 +1,17 @@
 // carico il modulo express
-const express = require("express");
+const express = require("express"),
+  sqliite3 = require("sqlite3").verbose();
 
 // creo una costante "port" dove imposto la porta che userò con "server.lister" per avviare il server
-const port = 3000;
+const port = 3000,
+  db = new sqliite3.Database("data/datatimeline.db");
+
+// creo una tabella "timeline" se non esiste, con una colonna "info" di tipo testo
+db.serialize(() => {
+  db.run(
+    "CREATE TABLE IF NOT EXISTS timeline (id INTEGER, titolo TEXT, testo TEXT, immagine TEXT)"
+  );
+});
 
 // creo un server, lo devo poi configurare e avviare
 const server = express();
@@ -68,4 +77,3 @@ server.delete("/timeline/:id", (req, res) => {
 server.listen(port, () => {
   console.log("server in ascolto!");
 });
-
