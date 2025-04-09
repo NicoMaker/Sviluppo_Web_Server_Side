@@ -2,6 +2,8 @@
 
 # Lezione 4: Sviluppo Web Server Side del 09 Aprile 2025
 
+[file info di NodeJS](info.md)
+
 ## Progetti (Esercizi)
 
 - [1 Progetto](Progetti/1_Progetto/)
