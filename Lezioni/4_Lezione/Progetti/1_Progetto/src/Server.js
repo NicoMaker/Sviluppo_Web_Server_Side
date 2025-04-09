@@ -64,24 +64,8 @@ server.delete("/timeline/:id", (req, res) => {
 
 // configurazione terminata
 
-
-app.use(express.json()); // per leggere JSON dal body della richiesta
-
-// 🔹 Variabile con i dati interni (invece di leggerli da un JSON)
-const dati = [
-  { id: 1, nome: "Mario", cognome: "Rossi" },
-  { id: 2, nome: "Luca", cognome: "Bianchi" },
-];
-
-// 🔸 POST che risponde usando i dati interni
-app.post("/dates", (req, res) => {
-  const { id } = req.body,
-    risultato = dati.find((item) => item.id === id);
-
-  if (risultato) {
-    res.json(risultato);
-  } else {
-    res.status(404).json({ errore: "Dato non trovato" });
-  }
+// ora lo avvio sulla porta indicata da "port"
+server.listen(port, () => {
+  console.log("server in ascolto!");
 });
 
