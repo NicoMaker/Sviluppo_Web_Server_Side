@@ -2,9 +2,16 @@
 
 # Lezione 4: Sviluppo Web Server Side del 09 Aprile 2025
 
-[file info di NodeJS](Mardown/info.md)
-[Rest](Mardown/Rest.mdRest.md)
-[Esempi Quey](Mardown/Rest.md)
+## Legenda
+
+- [File MD](#file-md)
+- [Progetti (Esercizi)](#progetti-esercizi)
+
+## File MD
+
+- [file info di NodeJS](Mardown/info.md)
+- [Rest](Mardown/Rest.mdRest.md)
+- [Esempi Quey](Mardown/Rest.md)
 
 ## Progetti (Esercizi)
 
