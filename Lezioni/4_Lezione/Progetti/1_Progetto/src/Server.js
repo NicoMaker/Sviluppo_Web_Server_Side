@@ -57,6 +57,11 @@ server.get("/timeline/:id", (req, res) => {
 
 // rispondo con "ok POST" alle chiamate con metodo "POST" che ricevo su "/timeline"
 server.post("/timeline", (req, res) => {
+
+  db.serialize (() => {
+    
+});
+
   res.status(201).send({
     id: 100,
     year: 2025,
