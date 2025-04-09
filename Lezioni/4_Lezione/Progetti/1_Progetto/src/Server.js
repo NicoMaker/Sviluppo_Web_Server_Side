@@ -28,7 +28,7 @@ server.get("/timeline", (_req, res) => {
   // carico il json
   const timelineContent = require("../data/timeline.json");
 
-  db.serialize(() => {
+  db.all(() => {
     db.all("SELECT * FROM timeline", (err, rows) => {
       if (err) {
         console.error(err.message);
@@ -154,6 +154,16 @@ server.delete("/timeline/:id", (req, res) => {
       });
     });
   };
+});
+
+server.delete("/timeline/:id", (req, res) => {
+  db.run("DELETE FROM timeline WHERE rowid = ?", req.params.id, (err) => {
+    if (err) return res.status(500).json({ error: err.message });
+    db.all("SELECT * FROM timeline", [], (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    });
+  });
 });
 
 // configurazione terminata
