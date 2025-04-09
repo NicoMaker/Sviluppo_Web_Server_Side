@@ -135,6 +135,14 @@ server.patch("/timeline/:id", (req, res) => {
 // rispondo con "ok DELETE con id..." alle chiamate con metodo "DELETE" che ricevo su "/timeline/:id"
 server.delete("/timeline/:id", (req, res) => {
   res.status(204).send();
+
+  db.delete = () => {
+    db.serialize(() => {
+      db.run("DELETE FROM timeline WHERE rowid = $id", {
+        $id: req.params.id,
+      });
+    });
+  }
 });
 
 // configurazione terminata
