@@ -74,7 +74,18 @@ Content-Type: application/json
 ### 
 DELETE http://localhost:3000/deleteall
 
-
 ###
 
-POST http://localhost:3000/dates
+POST http://localhost:3000/timeline/3
+
+Content-Type: application/json
+
+{
+  
+    "id": 3,
+    "year": 2025,
+    "company": "ACME",
+    "role": "Sviluppatore Junior",
+    "description": "Lorem ipsum dolor sit amet, in Lorem duis veniam laborum ipsum nulla proident",
+    "link": "https://google.com"
+}
