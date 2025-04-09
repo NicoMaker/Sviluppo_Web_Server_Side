@@ -5,11 +5,13 @@ const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("data/timeline.db");
 
+
 // creo una costante "port" dove imposto la porta che userò con "server.lister" per avviare il server
 const port = 3000;
 
 // creo un server, lo devo poi configurare e avviare
 const server = express();
+server.use(express.json());
 
 // creo la tabella nel database se già non esiste
 db.serialize(() => {

@@ -76,7 +76,7 @@ DELETE http://localhost:3000/deleteall
 
 ###
 
-POST http://localhost:3000/timeline/3
+POST http://localhost:3000/timeline/
 
 Content-Type: application/json
 
