@@ -28,6 +28,17 @@ server.get("/timeline", (_req, res) => {
   // carico il json
   const timelineContent = require("../data/timeline.json");
 
+  db.serialize(() => {
+    db.all("SELECT * FROM timeline", (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "Errore nel recupero dei dati" });
+      } else {
+        res.json(rows); // Manda i dati al client
+      }
+    });
+  });
+
   // invio la risposta
   res.send(timelineContent);
 });
@@ -142,7 +153,7 @@ server.delete("/timeline/:id", (req, res) => {
         $id: req.params.id,
       });
     });
-  }
+  };
 });
 
 // configurazione terminata
