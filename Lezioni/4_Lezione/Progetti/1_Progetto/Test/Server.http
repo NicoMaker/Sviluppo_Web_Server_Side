@@ -1,91 +1,35 @@
-### Ottieni tutti gli elementi della timeline
+
 GET http://localhost:3000/timeline
-Accept: application/json
 
+###
 
+GET http://localhost:3000/timeline/2
 
-### Ottieni un elemento della timeline per ID
-GET http://localhost:3000/timeline/1
-Accept: application/json
+###
 
+GET http://localhost:3000/timeline/2000
 
-### Aggiungi un nuovo elemento alla timeline
+###
+
 POST http://localhost:3000/timeline
 Content-Type: application/json
 
 {
-    "id": 3,
-    "titolo": "Nuova notizia",
-    "testo": "Dettagli della nuova notizia",
-    "data": "2025-04-02"
-}
-
-### 
-POST http://localhost:3000/timelinemany
-Content-Type: application/json
-
-[
-  {
-    "id": 3,
-    "titolo": "Nuova notizia",
-    "testo": "Dettagli della nuova notizia",
-    "data": "2025-04-02"
-  },
-  {
-    "id": 4,
-    "titolo": "Nuova notizia",
-    "testo": "Dettagli della nuova notizia",
-    "data": "2025-04-02"
-  }
-]
-
-### Modifica un elemento della timeline esistente (PUT - sostituisce tutto)
-PUT http://localhost:3000/timeline/1
-Content-Type: application/json
-
-{
-    "id": 1,
-    "titolo": "Notizia modificata",
-    "testo": "Testo modificato",
-    "data": "2025-04-02"
-}
-
-
-### Aggiorna parzialmente un elemento della timeline (PATCH - modifica solo un campo)
-PATCH http://localhost:3000/timeline/1
-Content-Type: application/json
-
-{
-    "data": "2026"
-}
-
-
-### Elimina un elemento della timeline
-DELETE http://localhost:3000/timeline/3
-
-
-DELETE http://localhost:3000/timelinemany
-Content-Type: application/json
-
-{
-  "ids": [3, 4]
-}
-
-### 
-DELETE http://localhost:3000/deleteall
-
-###
-
-POST http://localhost:3000/timeline/
-
-Content-Type: application/json
-
-{
-  
-    "id": 3,
     "year": 2025,
     "company": "ACME",
     "role": "Sviluppatore Junior",
     "description": "Lorem ipsum dolor sit amet, in Lorem duis veniam laborum ipsum nulla proident",
     "link": "https://google.com"
 }
+
+###
+
+PUT http://localhost:3000/timeline/2
+
+###
+
+PATCH http://localhost:3000/timeline/2
+
+###
+
+DELETE http://localhost:3000/timeline/2
