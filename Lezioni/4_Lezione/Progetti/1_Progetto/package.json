@@ -182,9 +182,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
-    "server": "node --watch src/Server.js",
     "db": "node src/database.js",
-    "server": "node --watch src/Server.js",
+    "server": "node --watch src/server.js",
     "frontend": "serve -p 4000 public"
   },
   "author": "undefined <Nicola Marano nicola.marano02@gmail.com>",

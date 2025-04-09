@@ -73,3 +73,8 @@ Content-Type: application/json
 
 ### 
 DELETE http://localhost:3000/deleteall
+
+
+###
+
+POST http://localhost:3000/dates
