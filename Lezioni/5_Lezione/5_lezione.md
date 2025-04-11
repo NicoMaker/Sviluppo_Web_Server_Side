@@ -5,6 +5,7 @@
 ## Legenda
 
 - [Progetti (Esercizi)](#progetti-esercizi)
+- [info](Mardown/Info.md)
 
 ## Progetti (Esercizi)
 
