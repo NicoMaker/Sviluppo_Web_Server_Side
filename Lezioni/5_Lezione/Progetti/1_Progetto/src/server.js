@@ -97,6 +97,8 @@ const server = express();
 // indico che voglio decodificare i contenuti che ricevo come JSON
 server.use(express.json());
 
+server.use("/", express.static("public"));
+
 // creo la tabella nel database se già non esiste
 db.serialize(() => {
   db.run(
@@ -108,6 +110,7 @@ db.serialize(() => {
 
 // rispondo con il contenuto di "../data/timeline.json" a chi richiede la rotta "/timeline"
 server.get("/timeline", (req, res) => {
+  console.log("arrivata richiesta di accesso alla timeline");
   // usare db per pescare tutte le righe presenti nella tabella timeline
   // e inviarle al client
   db.all("SELECT rowid AS id, * FROM timeline", function (err, rows) {
