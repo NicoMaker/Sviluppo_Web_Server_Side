@@ -219,7 +219,21 @@ server.post("/contact", (req, res) => {
   res.send("ok");
 });
 
+const { Telegraf } = require('telegraf')
+const { message } = require('telegraf/filters')
+const dotenv = require('dotenv');
+
+dotenv.config({ path: '.env.local' });
+
+const bot = new Telegraf(process.env.BOT_TOKEN)
+bot.start((ctx) => ctx.reply('Welcome'))
+bot.help((ctx) => ctx.reply('Send me a sticker'))
+bot.on(message('sticker'), (ctx) => ctx.reply('👍'))
+bot.hears('hi', (ctx) => ctx.reply('Hey there'))
+bot.launch()
+
 // configurazione terminata
+
 
 // ora lo avvio sulla porta indicata da "port"
 server.listen(port, () => {
