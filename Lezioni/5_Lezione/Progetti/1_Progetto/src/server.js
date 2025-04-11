@@ -25,6 +25,20 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 
 bot.start((ctx) => ctx.reply("Welcome"));
 
+bot.on("message", (ctx, next) => {
+  const photoArray = ctx.message.photo;
+
+  if (!photoArray) {
+    next();
+  }
+
+  console.log(photoArray);
+
+  const largestPhoto = photoArray[photoArray.length - 1];
+
+  console.log(largestPhoto);
+});
+
 bot.help((ctx) => ctx.reply("Send me a sticker"));
 bot.on(message("sticker"), (ctx) => ctx.reply("👍"));
 bot.hears("hi", (ctx) => {
@@ -254,7 +268,7 @@ server.post("/contact", (req, res) => {
     `Contatto\nNome: ${req.body.name}\nEmail: ${req.body.email}\nTel: ${req.body.tel}\nMessaggio\n\n${req.body.text}`
   );
 
-  res.send("ok");
+  res.send();
 });
 
 // configurazione terminata
