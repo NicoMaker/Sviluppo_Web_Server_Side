@@ -1,0 +1,10 @@
+
+
+POST http://localhost:3000/contact
+Content-Type: application/json
+{
+    "name": "nome di contatto",
+    "email": "nicola.marano02@gmail.com",
+    "tel": "3337024320",
+    "text": "Prova"
+}
