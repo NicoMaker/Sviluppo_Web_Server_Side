@@ -1,0 +1,49 @@
+GET http://localhost:3000/timeline
+
+###
+
+GET http://localhost:3000/timeline/3
+
+###
+
+GET http://localhost:3000/timeline/2000
+
+###
+
+POST http://localhost:3000/timeline
+Content-Type: application/json
+
+{
+    "year": 2025,
+    "company": "ACME",
+    "role": "Sviluppatore Junior",
+    "description": "Lorem ipsum dolor sit amet, in Lorem duis veniam laborum ipsum nulla proident",
+    "link": "https://google.com"
+}
+
+###
+
+PUT http://localhost:3000/timeline/7
+Content-Type: application/json
+
+{
+    "year": 2021,
+    "company": "ACME 2021",
+    "role": "Sviluppatore Junior",
+    "description": "Lorem ipsum dolor sit amet, in Lorem duis veniam laborum ipsum nulla proident",
+    "link": "https://google.com"
+}
+
+###
+
+PATCH http://localhost:3000/timeline/7
+Content-Type: application/json
+
+{
+    "year": 1900,
+    "company": "ACME 1900"
+}
+
+###
+
+DELETE http://localhost:3000/timeline/8
