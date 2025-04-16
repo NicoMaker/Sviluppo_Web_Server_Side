@@ -7,6 +7,7 @@
 - [Moduli](#-cosè-un-modulo-in-nodejs)
 - [Progetti (Esercizi)](#progetti-esercizi)
 
+
 ---
 
 ### 🔹 Cos'è un Modulo in Node.js?
@@ -62,4 +63,5 @@ console.log("Moltiplicazione:", math.moltiplica(4, 6)); // Output: Moltiplicazio
 
 ## Progetti (Esercizi)
 
+- [Legenda Esercizio](Progetti/1_Progetto/README.md)
 - [1 Progetto](Progetti/1_Progetto/)
