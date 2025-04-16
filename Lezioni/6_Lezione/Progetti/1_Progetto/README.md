@@ -1,4 +1,4 @@
-- [vai al file principale](../1_Progetto/README.md)
+- [vai al file principale della lezione](../../6_Lezione.md)
 
 # Primi passi
 
