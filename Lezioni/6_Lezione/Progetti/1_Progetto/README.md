@@ -36,4 +36,4 @@ Lancio
 git init
 ```
 
-per inizializzare il repository. Aggiungo anche il file `.gitignore` per escludere le cartelle `.vscode` e `node_modules`.
+per inizializzare il repository. Aggiungo anche il file `.gitignore` per escludere la cartella `node_modules`.
