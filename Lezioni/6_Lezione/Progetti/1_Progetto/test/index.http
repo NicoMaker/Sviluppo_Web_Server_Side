@@ -1,0 +1,50 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/1
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "zampe": 4,
+    "verso": "bau!"
+}
+
+###
+
+PUT http://localhost:3000/1
+Content-Type: application/json
+
+{
+    "zampe": 3,
+    "verso": "ahia"
+}
+
+###
+
+PATCH http://localhost:3000/1
+Content-Type: application/json
+
+{
+    "verso": "bau! bau!"
+}
+
+###
+
+DELETE http://localhost:3000/1
+
+###
+
+GET http://localhost:3000/image.jpg
+
+###
+
+GET http://localhost:3000/image2.webp
+
+###
+
+GET http://localhost:3000/image1000.jpg

@@ -7,7 +7,7 @@
     "start": "node src/index.js",
     "dev": "node --watch src/index.js"
   },
-  "author": "Nicola Marano <nicola.marano02@gmail.com>",
+  "author": "Nicola Marano <Nicola.marano02@gmail.com>",
   "license": "ISC",
   "description": "",
   "dependencies": {
