@@ -1,0 +1,13 @@
+
+### Test 6: Richiesta POST con proprietà aggiuntive (dovrebbe funzionare comunque)
+POST http://localhost:3000/verso
+Content-Type: application/json
+
+{
+    "animale":"Cane",
+    "verso":"Bau"
+}
+
+###
+
+GET  http://localhost:3000/versi
