@@ -8,4 +8,3 @@
 - [4 Lezione](Lezioni/4_Lezione/4_Lezione.md)
 - [5 Lezione](Lezioni/5_Lezione/5_lezione.md)
 - [6 Lezione](Lezioni/6_Lezione/6_Lezione.md)
-- [Esame](Esame_FROT)
